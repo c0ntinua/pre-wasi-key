@@ -6,3 +6,10 @@ This program is especially intended for WebAssembly runtimes. It creates a rando
 For instance, in the screenshot, I used:
 
 `wasmer pre-wasi-gen.wasm --dir=. 3 3 3 3 6 9 'O|@'`
+
+Each key is a vector of states (represented above on separate lines), and each state is a vector of responses (these are enclosed within parentheses). Each response encodes (reads writes next_state). Because each state's responses together write a prefix code, the encoding can be inverted. I find this approach interesting because it's difficult to tokenize the ciphertext. The other feature is the pattern matching that writes fewer symbols than it reads. Together these lead to a situation where shorter inputs can have longer outputs (and the reverse.) Here's the application of a different random key.
+
+
+
+![image](https://user-images.githubusercontent.com/90075803/212467549-502c2173-dcc3-4acc-b4b2-2fb15477c8cb.png)
+
